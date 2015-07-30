@@ -14,7 +14,7 @@ public class Main {
     int[][] dnamatrix = new int[x][y];
 
 
-    public void main() {
+    public static void main(String [] args) {
         creatematrix(dna);
         //System.out.println(contadorfila);
         //    System.out.println(contador);
