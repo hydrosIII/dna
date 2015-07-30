@@ -2,9 +2,19 @@ package com.company;
 
 
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
+
+    String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
+    // Counter no know coincidences in dna.
+    int contador = 0;
+    // medidas de la matriz
+    int x = dna.length;
+    int y = dna[1].length();
+
+
 
     public void main{
 
@@ -12,15 +22,12 @@ public class Main {
     }
 
 
-    public  void creatematrix(String[] args) {
-        String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
+    public int[][] creatematrix (String[] args) {
+
         // obtain matrix dimensions from string array.
 
-        // Counter no know coincidences in dna.
-        int contador = 0;
-        // medidas de la matriz
-        int x = dna.length;
-        int y = dna[1].length();
+
+
         // rows es x
         //columnas es y
         // creates memory space of matrix
@@ -59,6 +66,9 @@ public class Main {
             }
         return dnamatrix;
     }
+
+
+
         System.out.println(Arrays.deepToString(dnamatrix));
 
 
@@ -87,26 +97,7 @@ public class Main {
         int contadorfila = 0;
         //System.out.println(contadorfila);
 
-        public void cuentafilas(dnamatrix, x, y, contador) {
-
-        for (int k = 0; k < y; k++) {
-            //int contadorfila = 0;
-            if (contadorfila >= 3)
-                contador = contador + 1;
-            for (int l = 0; l < x; l++) {
-                int g = l + 1;
-                if (g == x)
-                    return;if (dnamatrix[k][l] == dnamatrix[k][g])
-                    contadorfila = contadorfila + 1;
-
-
-            }
-
-        }
-    }
-
-    public void cuentacolumnas(dnamatrix, x, y, contador){
-
+        public int cuentafilas(int ) {
             for (int k = 0; k < y; k++) {
                 //int contadorfila = 0;
                 if (contadorfila >= 3)
@@ -114,22 +105,46 @@ public class Main {
                 for (int l = 0; l < x; l++) {
                     int g = l + 1;
                     if (g == x)
-                        return;
-                    if (dnamatrix[k][l] == dnamatrix[k][g])
+                        return;if (dnamatrix[k][l] == dnamatrix[k][g])
                         contadorfila = contadorfila + 1;
 
 
                 }
 
             }
+        }
+    }
+
+    public int cuentacolumnas(dnamatrix, x, y, contador){
+
+            for (int k = 0; k < x; k++) {
+                //int contadorfila = 0;
+                if (contadorfila >= 3)
+                    contador = contador + 1;
+                for (int l = 0; l < y; l++) {
+                    int g = l + 1;
+                    if (g == x)
+                        return;
+                    if (dnamatrix[k][l] == dnamatrix[k][g])
+                        contadorfila = contadorfila + 1;
+
+
+                    return contadorfila;
+
+                }
 
             }
+
+            public void cuentacolumnas{
 
         System.out.println(contadorfila);
         System.out.println(contador);
 
     }
-}
+
+
+    }
+
 
 
 
