@@ -4,17 +4,18 @@ import java.util.Arrays;
 
 public class Main {
 
-    String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
+    static String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
     // Counter no know coincidences in dna.
     int contador = 0;
     // // obtain matrix dimensions from string array.
-    int x = dna.length;
-    int y = dna[1].length();
+    static int x = dna.length;
+    static int y = dna[1].length();
     /// initiziles the matrix in memory
-    int[][] dnamatrix = new int[x][y];
+    static int[][] dnamatrix = new int[x][y];
 
 
     public static void main(String [] args) {
+
         creatematrix(dna);
         //System.out.println(contadorfila);
         //    System.out.println(contador);
@@ -23,7 +24,7 @@ public class Main {
     }
 
 
-    public int[][] creatematrix(String[] args) {
+    public static int[][] creatematrix(String[] args) {
         // creates memory space of matrix
         //int[][] dnamatrix;
         //dnamatrix = new int[x][y];
