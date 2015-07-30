@@ -6,12 +6,16 @@ public class Main {
 
     static String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
     // Counter no know coincidences in dna.
-    int contador = 0;
+    static int contador = 0;
     // // obtain matrix dimensions from string array.
     static int x = dna.length;
     static int y = dna[1].length();
     /// initiziles the matrix in memory
     static int[][] dnamatrix = new int[x][y];
+
+    //
+    //static int contadorfila = 0;
+    //static int contadorcolumna =0;
 
 
     public static void main(String [] args) {
@@ -20,6 +24,12 @@ public class Main {
         //System.out.println(contadorfila);
         //    System.out.println(contador);
         System.out.println(Arrays.deepToString(dnamatrix));
+
+        //cuentafilas();
+        //System.out.println(contadorfila);
+        //cuentacolumnas();
+
+        System.out.println(contador);
 
     }
 
@@ -86,14 +96,15 @@ public class Main {
 
     //System.out.println(contadorfila);
 
-    public int cuentafilas(int[][] args) {
-        int[][] dnamatrix;
-        dnamatrix = new int[x][y];
+    public static int cuentafilas() {
+        //int[][] dnamatrix;
+        //dnamatrix = new int[x][y];
         int contadorfila = 0;
         for (int k = 0; k < y; k++) {
             //int contadorfila = 0;
             if (contadorfila >= 3)
                 contador = contador + 1;
+            contadorfila = 0;
             for (int l = 0; l < x; l++) {
                 int g = l + 1;
                 if (g == x)
@@ -105,18 +116,20 @@ public class Main {
             }
 
         }
+        System.out.println(contadorfila);
         return contadorfila;
+
     }
 
 
-    public int cuentacolumnas(int[][] args) {
-        int[][] dnamatrix;
-        dnamatrix = new int[x][y];
+    public static int cuentacolumnas() {
+        //int[][] dnamatrix;
+        //dnamatrix = new int[x][y];
         int contadorcolumna = 0;
         for (int k = 0; k < x; k++) {
-
             if (contadorcolumna >= 3)
                 contador = contador + 1;
+              contadorcolumna = 0;
             for (int l = 0; l < y; l++) {
                 int g = l + 1;
                 if (g == x)
@@ -131,7 +144,7 @@ public class Main {
 
 
         }
-
+        System.out.println(contadorcolumna);
         return  contadorcolumna;
 
     }
