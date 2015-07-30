@@ -1,14 +1,18 @@
 package com.company;
 
-import java.lang.reflect.Array;
+
 
 import java.util.Arrays;
-import java.util.Scanner;
-
 
 public class Main {
 
-    public static void main(String[] args) {
+    public void main{
+
+
+    }
+
+
+    public  void creatematrix(String[] args) {
         String[] dna = {"AAAAGA", "CAGTGC", "TTATGT", "AGAAGG", "TCACTG", "CCCTAT"};
         // obtain matrix dimensions from string array.
 
@@ -53,7 +57,8 @@ public class Main {
                 dnamatrix[i][j] = intArray[j % y + i * y];
 
             }
-
+        return dnamatrix;
+    }
         System.out.println(Arrays.deepToString(dnamatrix));
 
 
@@ -82,20 +87,25 @@ public class Main {
         int contadorfila = 0;
         //System.out.println(contadorfila);
 
+        public void cuentafilas(dnamatrix, x, y, contador) {
+
         for (int k = 0; k < y; k++) {
             //int contadorfila = 0;
             if (contadorfila >= 3)
                 contador = contador + 1;
-           for (int l = 0; l < x; l++) {
+            for (int l = 0; l < x; l++) {
                 int g = l + 1;
                 if (g == x)
-                    return;
-                if (dnamatrix[k][l] == dnamatrix[k][g])
-                    contadorfila  = contadorfila + 1;
+                    return;if (dnamatrix[k][l] == dnamatrix[k][g])
+                    contadorfila = contadorfila + 1;
 
 
             }
 
+        }
+    }
+
+    public void cuentacolumnas(dnamatrix, x, y, contador){
 
             for (int k = 0; k < y; k++) {
                 //int contadorfila = 0;
@@ -106,14 +116,15 @@ public class Main {
                     if (g == x)
                         return;
                     if (dnamatrix[k][l] == dnamatrix[k][g])
-                        contadorfila  = contadorfila + 1;
+                        contadorfila = contadorfila + 1;
 
 
                 }
 
-
+            }
 
             }
+
         System.out.println(contadorfila);
         System.out.println(contador);
 
