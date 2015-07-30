@@ -1,8 +1,9 @@
 package com.company;
-import com.sun.org.apache.xpath.internal.functions.FuncFalse;
+
 
 import java.util.Arrays;
 
+// there could be bugs due to the implementation of variables x and y and the java counter in 0. Needs some rechecking.
 
 public class Main {
 
@@ -24,14 +25,12 @@ public class Main {
 
 
         cuentafilas();
-        //if (contador == 2)
-        //    return
         cuentacolumnas();
         cuentadiagonalesy();
         cuentadiagonalesx();
 
         System.out.println(contador);
-        
+
 
         if (contador >= 2) {
             System.out.println("Mutante!!");
@@ -77,8 +76,7 @@ public class Main {
 
 
     public static int cuentafilas() {
-        //int[][] dnamatrix;
-        //dnamatrix = new int[x][y];
+
         int contadorfila = 0;
         for (int k = 0; k < y; k++) {
             //int contadorfila = 0;
@@ -102,8 +100,7 @@ public class Main {
 
 
     public static int cuentacolumnas() {
-        //int[][] dnamatrix;
-        //dnamatrix = new int[x][y];
+
         int contadorcolumna = 0;
         for (int k = 0; k < x; k++) {
             if (contadorcolumna >= 3)
@@ -148,7 +145,7 @@ public class Main {
                 if (t == y  || z == x  ) //defines the boundaries of the matrix
                     break;
 
-                while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the nest column.
+                while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the next column.
                     contadordiagonal = contadordiagonal + 1;
 
 
@@ -175,6 +172,8 @@ public class Main {
         return contadordiagonal;
     }
 
+// same method as above but starting from the other side
+    // then going backwards
 
     public static int cuentadiagonalesx() {
         //System.out.println("las diagonales x");
@@ -193,14 +192,9 @@ public class Main {
                 int t = h;
                 int z = g;
 
-
-
                 contadordiagonalx = 0;
-
                 if (t == y  || z == 0  ) //defines the boundaries of the matrix
                     break;
-
-
                 while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the nest column.
                     contadordiagonalx = contadordiagonalx + 1;
                     //System.out.println(contadordiagonalx);
@@ -230,24 +224,3 @@ public class Main {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
