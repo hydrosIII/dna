@@ -13,7 +13,7 @@ public class Main {
     static int x = (dna.length -1); // counts from 0
     static int y = (dna[1].length()-1); // counts from 0
     /// initiziles the matrix in memory
-    static int[][] dnamatrix = new int[x][y];
+    static int[][] dnamatrix = new int[x+1][y+1];
     //static boolean mutante = new boolean[];
 
 
@@ -28,8 +28,17 @@ public class Main {
         //    return
         cuentacolumnas();
         cuentadiagonalesy();
+        cuentadiagonalesx();
 
         System.out.println(contador);
+        
+
+        if (contador >= 2) {
+            System.out.println("Mutante!!");
+        }
+
+        else System.out.println("No mutante");
+
 
     }
 
@@ -57,9 +66,9 @@ public class Main {
 
 
 
-        for (int i = 0; i < x; i++)
-            for (int j = 0; j < y; j++) {
-                dnamatrix[i][j] = intArray[j % y + i * y];
+        for (int i = 0; i < x + 1; i++)
+            for (int j = 0; j < y + 1; j++) {
+                dnamatrix[i][j] = intArray[j % (y + 1) + i * (y + 1)];
 
             }
         return dnamatrix;
@@ -117,7 +126,7 @@ public class Main {
 
 
     public static int cuentadiagonalesy() {
-        System.out.println("las diagonales");
+        //System.out.println("las diagonales");
         int contadordiagonal = 0;
 
         for (int k = 0; k < y; k++) {
@@ -133,19 +142,17 @@ public class Main {
                 int t = h;
                 int z = g;
 
-                //if (contadordiagonal >= 3) // agrega al contador final
-                //    contador = contador + 1;
-                System.out.println(contadordiagonal);
+
                 contadordiagonal = 0;
 
-                if (t == x  || z == y  ) //defines the boundaries of the matrix
+                if (t == y  || z == x  ) //defines the boundaries of the matrix
                     break;
 
                 while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the nest column.
                     contadordiagonal = contadordiagonal + 1;
-                    System.out.println(contadordiagonal);
 
-                    if (z == x  || t == y ) // defines the boundaries of the matrix
+
+                    if (t == y   || z == x ) // defines the boundaries of the matrix
                         break;
                     if (contadordiagonal >= 3) {
                     contador = contador + 1;
@@ -167,6 +174,61 @@ public class Main {
 
         return contadordiagonal;
     }
+
+
+    public static int cuentadiagonalesx() {
+        //System.out.println("las diagonales x");
+        int contadordiagonalx = 0;
+
+        for (int k = 0; k < y; k++) {
+
+
+            for (int l = x; l >= 0; l--) {
+                int g = l - 1; /// variables for diagonals
+                int h = k + 1;
+
+                /// variables for the while loop
+                int r = l;
+                int f = k;
+                int t = h;
+                int z = g;
+
+
+
+                contadordiagonalx = 0;
+
+                if (t == y  || z == 0  ) //defines the boundaries of the matrix
+                    break;
+
+
+                while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the nest column.
+                    contadordiagonalx = contadordiagonalx + 1;
+                    //System.out.println(contadordiagonalx);
+
+                    if (t == y  || z == 0 ) // defines the boundaries of the matrix
+                        break;
+                    if (contadordiagonalx >= 3) {
+                        contador = contador + 1;
+                        break;}
+                    f = f + 1;
+                    r = r - 1;
+                    t = t + 1;
+                    z = z - 1;
+
+                }
+
+            }
+
+
+
+
+
+        }
+
+        return contadordiagonalx;
+    }
+
+
 }
 
 
