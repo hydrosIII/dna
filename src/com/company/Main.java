@@ -1,4 +1,6 @@
 package com.company;
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
+
 import java.util.Arrays;
 
 
@@ -8,26 +10,24 @@ public class Main {
     // Counter no know coincidences in dna.
     static int contador = 0;
     // // obtain matrix dimensions from string array.
-    static int x = dna.length;
-    static int y = dna[1].length();
+    static int x = (dna.length -1); // counts from 0
+    static int y = (dna[1].length()-1); // counts from 0
     /// initiziles the matrix in memory
     static int[][] dnamatrix = new int[x][y];
-
-    //
-    //static int contadorfila = 0;
-    //static int contadorcolumna =0;
+    //static boolean mutante = new boolean[];
 
 
-    public static void main(String [] args) {
-
+    public static void main(String[] args) {
         creatematrix(dna);
-        //System.out.println(contadorfila);
-        //    System.out.println(contador);
+
         System.out.println(Arrays.deepToString(dnamatrix));
 
-        //cuentafilas();
-        //System.out.println(contadorfila);
-        //cuentacolumnas();
+
+        cuentafilas();
+        //if (contador == 2)
+        //    return
+        cuentacolumnas();
+        cuentadiagonalesy();
 
         System.out.println(contador);
 
@@ -35,9 +35,6 @@ public class Main {
 
 
     public static int[][] creatematrix(String[] args) {
-        // creates memory space of matrix
-        //int[][] dnamatrix;
-        //dnamatrix = new int[x][y];
         int[] ejemplo = new int[10];
         // changes the array into string and changes number to letters.
         String dnastring = Arrays.toString(dna)
@@ -58,11 +55,7 @@ public class Main {
             intArray[m] = Integer.parseInt(String.valueOf(dnastring.charAt(m)));
         }
 
-        //System.out.println(dnastring);
-        //System.out.println(Arrays.toString(intArray));
 
-
-/// constructs the matrix from the string array
 
         for (int i = 0; i < x; i++)
             for (int j = 0; j < y; j++) {
@@ -73,28 +66,6 @@ public class Main {
     }
 
 
-    // algorithm to see of there are tow letters repeated.
-
-// busca en x
-
-
-    //for (int row = 0; row < x; row++) {
-    //int contadorfila = 0;
-    //{
-    //int fila[] = dnamatrix[row];
-    //for (int character = 0; character < fila.length; character++) {
-    //int comp = (character + 1);
-    //System.out.println(comp);
-    //System.out.println(fila[character]);
-
-    //while (comp <= x) {
-    //      System.out.println(fila[character]);
-
-    //}
-    //if (fila[character] == fila[comp])
-
-
-    //System.out.println(contadorfila);
 
     public static int cuentafilas() {
         //int[][] dnamatrix;
@@ -116,8 +87,7 @@ public class Main {
             }
 
         }
-        System.out.println(contadorfila);
-        return contadorfila;
+       return contadorfila;
 
     }
 
@@ -129,28 +99,75 @@ public class Main {
         for (int k = 0; k < x; k++) {
             if (contadorcolumna >= 3)
                 contador = contador + 1;
-              contadorcolumna = 0;
+            contadorcolumna = 0;
             for (int l = 0; l < y; l++) {
                 int g = l + 1;
                 if (g == x)
                     break;
                 if (dnamatrix[k][l] == dnamatrix[k][g])
                     contadorcolumna = contadorcolumna + 1;
-
-
-
-
             }
 
 
         }
-        System.out.println(contadorcolumna);
-        return  contadorcolumna;
+
+        return contadorcolumna;
 
     }
+
+
+    public static int cuentadiagonalesy() {
+        System.out.println("las diagonales");
+        int contadordiagonal = 0;
+
+        for (int k = 0; k < y; k++) {
+
+
+            for (int l = 0; l < x; l++) {
+                int g = l + 1; /// variables for diagonals
+                int h = k + 1;
+
+                /// variables for the while loop
+                int r = l;
+                int f = k;
+                int t = h;
+                int z = g;
+
+                //if (contadordiagonal >= 3) // agrega al contador final
+                //    contador = contador + 1;
+                System.out.println(contadordiagonal);
+                contadordiagonal = 0;
+
+                if (t == x  || z == y  ) //defines the boundaries of the matrix
+                    break;
+
+                while (dnamatrix[f][r] == dnamatrix[t][z]) {  //check diagonals starting from 0, then with the for loop it moves to the nest column.
+                    contadordiagonal = contadordiagonal + 1;
+                    System.out.println(contadordiagonal);
+
+                    if (z == x  || t == y ) // defines the boundaries of the matrix
+                        break;
+                    if (contadordiagonal >= 3) {
+                    contador = contador + 1;
+                    break;}
+                    f = f + 1;
+                    r = r + 1;
+                    t = r + 1;
+                    z = z + 1;
+
+                }
+
+            }
+
+
+
+
+
+        }
+
+        return contadordiagonal;
+    }
 }
-            //System.out.println(contadorfila);
-            //    System.out.println(contador);
 
 
 
@@ -162,31 +179,9 @@ public class Main {
 
 
 
-//
- //           if (contadorfila >= 4)
 
-   //             contador = contador + 1;
 
-     //   }
-    //}
-//}
 
- //       System.out.println(contador);
-
-// busca en y
-
-        //    for(int k =0 ; k < x ; k++) {
-        //       int contadorcolumna = 0;
-        //       for (int l = 0; l < y; l++) {
-        //          if (dnamatrix[k][l] == dnamatrix[k][l-1])
-        //              contadorcolumna = contadorcolumna + 1;
-        //     }
-        //    if (contadorcolumna >= 4)
-        //       contador = contador + 1;
-
-//        }
-
-        //  }
 
 
 
