@@ -18,10 +18,11 @@ public class Main {
     //static boolean mutante = new boolean[];
 
 
-    public static void main(String[] args) {
+    public static boolean main(String[] args) {
         creatematrix(dna);
 
-        System.out.println(Arrays.deepToString(dnamatrix));
+        // if you want to print the newly created matrix, uncomment this line.
+        //System.out.println(Arrays.deepToString(dnamatrix));
 
 
         cuentafilas();
@@ -29,14 +30,19 @@ public class Main {
         cuentadiagonalesy();
         cuentadiagonalesx();
 
-        System.out.println(contador);
+        /// If you wnat to know how many adjacent 4 letters count, uncomment this line.
+
+        //System.out.println(contador);
 
 
         if (contador >= 2) {
-            System.out.println("Mutante!!");
+            //System.out.println("Mutante!!");
+            return true;
         }
 
-        else System.out.println("No mutante");
+        else return false;
+
+            //System.out.println("No mutante");
 
 
     }
